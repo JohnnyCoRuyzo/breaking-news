@@ -69,17 +69,17 @@ class Blog extends Component {
         },
       })),
       sections: [
-        { title: 'Bitcoin', url: 'q=bitcoin' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Technology', url: 'q=technology' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Design', url: 'q=design' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Culture', url: 'q=culture' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Business', url: 'q=business' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Politics', url: 'q=politics' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Opinion', url: 'q=opinion' + "&from=" + Date.prototype.toSearchableFormat(0)},
-        { title: 'Science', url: 'q=science' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Health', url: 'q=health'  + "&from=" + Date.prototype.toSearchableFormat(0)},
-        { title: 'Style', url: 'q=style' + "&from=" + Date.prototype.toSearchableFormat(0) },
-        { title: 'Travel', url: 'q=travel' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Bitcoin', url: '?q=bitcoin' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Technology', url: '?q=technology' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Design', url: '?q=design' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Culture', url: '?q=culture' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Business', url: '?q=business' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Politics', url: '?q=politics' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Opinion', url: '?q=opinion' + "&from=" + Date.prototype.toSearchableFormat(0)},
+        { title: 'Science', url: '?q=science' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Health', url: '?q=health'  + "&from=" + Date.prototype.toSearchableFormat(0)},
+        { title: 'Style', url: '?q=style' + "&from=" + Date.prototype.toSearchableFormat(0) },
+        { title: 'Travel', url: '?q=travel' + "&from=" + Date.prototype.toSearchableFormat(0) },
       ],
       mainFeaturedPost: {},
       featuredPosts: [],
@@ -111,13 +111,14 @@ class Blog extends Component {
   }
 
   componentDidMount(){
+    //
     let extensionUrl = document.baseURI.replace(window.location.protocol + "//" + window.location.host + '/','');
     if(extensionUrl === ''){
-      window.location.href = document.baseURI + 'q=bitcoin&from=2021-01-07';
+      window.location.href = window.location.protocol + "//" + window.location.host + '?q=bitcoin&from='+Date.prototype.toSearchableFormat(0);
     }
     else{
       let searchTerm = extensionUrl;
-      fetch("http://newsapi.org/v2/everything?" + searchTerm + "&sortBy=publishedAt&apiKey=def59b2c8beb4495896b7bd46a19ca4a", {
+      fetch("http://newsapi.org/v2/everything" + searchTerm + "&sortBy=publishedAt&apiKey=def59b2c8beb4495896b7bd46a19ca4a", {
         "method": "GET"
       })
       .then(response => response.json())
