@@ -118,7 +118,7 @@ class Blog extends Component {
     }
     else{
       let searchTerm = extensionUrl;
-      fetch("http://newsapi.org/v2/everything" + searchTerm + "&sortBy=publishedAt&apiKey=def59b2c8beb4495896b7bd46a19ca4a", {
+      fetch("https://newsapi.org/v2/everything" + searchTerm + "&sortBy=publishedAt&apiKey=def59b2c8beb4495896b7bd46a19ca4a", {
         "method": "GET"
       })
       .then(response => response.json())
